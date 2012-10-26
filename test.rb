@@ -5,11 +5,15 @@
 
 require File.expand_path('packet')
 require File.expand_path('workstation')
+require File.expand_path('printer')
+require File.expand_path('fileserver')
 
 def set_up
   sun = Workstation.new("Sun")
   pc = Workstation.new("PC")
   mac = Workstation.new("Mac")
+  printer = Printer.new("Bother")
+  fileserver = Fileserver.new("SomeF")
   sun.next_node = mac
 
   p1 = Packet.new("pack1", "PC", "Mac")
@@ -18,6 +22,8 @@ def set_up
   sun.originate(p2)
   p3 = Packet.new("pack3", "Sun", "PC")
   sun.originate(p3)
+  p4 = Packet.new("pack4", "Mac", "Bother")
+  mac.originate(p4)
 
   p4 = Packet.new("testpack", "Mac", "Sun")
   print "Pakiet #{p4.contents} zostal wyslany przez stacje: "
@@ -56,7 +62,7 @@ if s2.has_next_node
   puts "Stacja ma nastepnik"
 end
 begin
-  Workstation.new("", s1)
+  Workstation.new("")
 rescue
   puts "Niepoprawna stacja nie powstala"
 end

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Agnieszka Góralczyk 233133
 # Dorota Suchocka 233218
 

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Agnieszka Góralczyk 233133
 # Dorota Suchocka 233218
 
@@ -11,10 +13,11 @@ class Printer < Node
   def accept(packet)
     @last_packet_send = nil
     if packet.receiver == @name
-      print "Stacja #{@name} zaakceptowala pakiet: "
+      print "Drukarka #{@name} wydrukowała pakiet: "
       puts packet.to_s
     else
       send packet
     end
   end
+
 end

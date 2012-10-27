@@ -22,10 +22,12 @@ def set_up
   sun.originate(p2)
   p3 = Packet.new("pack3", "Sun", "PC")
   sun.originate(p3)
-  p5 = Packet.new("pack4", "Mac", "Bother")
+  p5 = Packet.new("pack5", "Mac", "Bother")
   mac.originate(p5)
-  p6 = Packet.new("pack5", "PC", "SomeF")
+  p6 = Packet.new("pack6", "PC", "SomeF")
   pc.originate(p6)
+  p7 = Packet.new("Pack7", "PC", "NIC")
+  pc.originate(p3)
 
   p4 = Packet.new("testpack", "Mac", "Sun")
   print "Pakiet #{p4.contents} zostal wyslany przez stacje: "

@@ -22,15 +22,15 @@ class Node
   end
 
   def accept(packet)
-    @last_packet_send = nil
-    unless packet.receiver == @name
-      send packet
+    if packet.ttl > 0
+      packet.ttl -= 1
+      @next_node.accept packet
     end
   end
 
   def send(packet)
     @last_packet_send = packet
-    if has_next_node
+    if has_next_node && (packet.ttl > 0)
       @next_node.accept packet
     end
   end

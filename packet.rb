@@ -4,16 +4,17 @@
 # Dorota Suchocka 233218
 
 class Packet
-  attr_accessor :contents, :receiver, :sender
+  attr_accessor :contents, :receiver, :sender, :ttl
 
   @contents = ""
   @receiver = ""
   @sender = ""
 
-  def initialize(contents,receiver,sender)
+  def initialize(contents,receiver,sender, ttl = 64)
     @contents = contents
     @receiver = receiver
     @sender = sender
+    @ttl = ttl
     invariant
   end
 

@@ -3,7 +3,7 @@
 # Agnieszka Góralczyk 233133
 # Dorota Suchocka 233218
 
-class Fileserver < Node
+class Fileserver < TransitiveNode
   def initialize(name)
     super name
   end
@@ -11,8 +11,7 @@ class Fileserver < Node
   def accept(packet)
     @last_packet_send = nil
     if packet.receiver == @name
-      print "Stacja #{@name} zapisała pakiet: "
-      puts packet.to_s
+      print_name
     else
       send packet
     end

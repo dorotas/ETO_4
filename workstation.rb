@@ -3,9 +3,9 @@
 # Agnieszka Góralczyk 233133
 # Dorota Suchocka 233218
 
-require_relative './node.rb'
+require_relative './transitive_node.rb'
 
-class Workstation < Node
+class Workstation < TransitiveNode
   def initialize(name)
     super name
   end
@@ -13,8 +13,7 @@ class Workstation < Node
   def accept(packet)
     @last_packet_send = nil
     if packet.receiver == @name
-      print "Stacja #{@name} zaakceptowala pakiet: "
-      puts packet.to_s
+      print_name
     else
       send packet
     end

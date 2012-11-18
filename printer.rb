@@ -5,7 +5,7 @@
 
 require_relative './node.rb'
 
-class Printer < Node
+class Printer < TransitiveNode
   def initialize(name)
     super name
   end
@@ -13,8 +13,7 @@ class Printer < Node
   def accept(packet)
     @last_packet_send = nil
     if packet.receiver == @name
-      print "Drukarka #{@name} wydrukowała pakiet: "
-      puts packet.to_s
+      print_name
     else
       send packet
     end

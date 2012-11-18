@@ -3,6 +3,8 @@
 # Agnieszka Góralczyk 233133
 # Dorota Suchocka 233218
 
+require_relative './transitive_node.rb'
+
 class Fileserver < TransitiveNode
   def initialize(name)
     super name

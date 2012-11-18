@@ -4,13 +4,22 @@
 # Dorota Suchocka 233218
 
 require "test/unit"
+require File.dirname(__FILE__) + '/fileserver.rb'
+require File.dirname(__FILE__) + '/packet.rb'
+require File.dirname(__FILE__) + '/workstation.rb'
 
 class FileserverTest < Test::Unit::TestCase
 
   # Called before every test method runs. Can be used
   # to set up fixture information.
   def setup
-    # Do nothing
+    @fileserver = Fileserver.new("fileserver")
+    @nadawca = Workstation.new("nadawca")
+    @p = Workstation.new("p")
+    @nadawca.next_node = @fileserver
+    @fileserver.next_node = @p
+    @packet = Packet.new("A", "p", "nadawca")
+
   end
 
   # Called after every test method runs. Can be used to tear
@@ -20,10 +29,13 @@ class FileserverTest < Test::Unit::TestCase
     # Do nothing
   end
 
-  # Fake test
-  def test_fail
-
-    # To change this template use File | Settings | File Templates.
-    fail("Not implemented")
+  def test_initialize
+    assert_equal("fileserver", @fileserver.name)
   end
+
+  def test_accept
+    @fileserver.accept(@packet)
+    assert_equal(@packet.to_s, "#{@fileserver.last_packet_send}")
+  end
+
 end

@@ -1,0 +1,15 @@
+Dorota Suchocka 233218
+Agnieszka Góralczyk 233133
+
+Packet:
+
+Ró¿nica w inicjalizacji: w naszym rozwi¹zaniu znajduje siê dodatkowa zmienna: sender.
+W podanym rozwi¹zaniu sprawdzanych jest du¿o wiêcej warunków na pocz¹tku konstruktora.
+Funkcja setSender wymaga tylko attr_writer :sender (attr_accessor :contents, :receiver - s¹ niepotrzebne)
+
+Workstation:
+
+Ró¿nica w inicjalizacji: w naszym rozwi¹zaniu znajdowa³o siê dodatkowo next_node.
+
+
+Nasz kod nie mia³ wielu asercji, kod przyk³adowej implementacji mia³ ich znacznie wiêcej

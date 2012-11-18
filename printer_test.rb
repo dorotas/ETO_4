@@ -7,6 +7,7 @@ require "test/unit"
 require File.dirname(__FILE__) + '/printer.rb'
 require File.dirname(__FILE__) + '/packet.rb'
 require File.dirname(__FILE__) + '/workstation.rb'
+require File.dirname(__FILE__) + '/transitive_node.rb'
 
 class MyTest < Test::Unit::TestCase
 
@@ -15,14 +16,19 @@ class MyTest < Test::Unit::TestCase
   def setup
     @printer = Printer.new("drukarka")
     @pc = Workstation.new("pc")
-    @pc.next_node = @printer
-    @packet = Packet.new("Zawartosc", "drukarka", "pc")
+    @a = Workstation.new("a")
+    @pc.next_node = @a
+    @a.next_node = @printer
+    @packet = Packet.new("Zawartosc", "a", "pc")
+  end
+
+  def test_initialize
+    assert_equal("drukarka", @printer.name)
   end
 
   def test_accept
-    @pc.send(@packet)
-    assert_equal("Drukarka drukarka wydrukowała pakiet: Pakiet Zawartosc z pc do drukarka", @printer.accept(@packet))
+    @printer.accept(@packet)
+    assert_equal(@packet.to_s, "#{@printer.last_packet_send}")
   end
-
 
 end

@@ -3,7 +3,7 @@
 # Agnieszka Góralczyk 233133
 # Dorota Suchocka 233218
 
-require_relative './node.rb'
+require_relative './transitive_node.rb'
 
 class Printer < TransitiveNode
   def initialize(name)

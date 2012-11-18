@@ -9,13 +9,12 @@ require File.dirname(__FILE__) + '/packet.rb'
 
 class MyTest < Test::Unit::TestCase
 
-
   def setup
-    # Do nothing
+    @packet = Packet.new("dobry pakiet", "ekran", "pakietowo")
   end
 
   def test_initialize
-    assert( @packet = Packet.new("dobry pakiet", "ekran", "pakietowo") )
+    assert_equal("Pakiet dobry pakiet z pakietowo do ekran", @packet.to_s )
   end
 
 

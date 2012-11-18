@@ -20,8 +20,14 @@ class Node
 
   def send(packet)
   end
+<<<<<<< HEAD
 
   def print_name
     puts "Node: #{name}"
+=======
+  
+  def print_name
+	puts "Node: #{name}"
+>>>>>>> 9a67cb0f6a64bf2f44e2e38498478cc703b5531a
   end
 end
